@@ -6,6 +6,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.animal.entity.User;
+import org.springframework.beans.factory.annotation.Value;
 
 
 import java.util.Date;
@@ -21,6 +22,7 @@ public class TokenUtil {
 
     private static final long EXPIRE_TIME= 60*60*1000;
     private static final String TOKEN_SECRET="password";  //密钥盐
+
 
     // 签名生成
     public static String sign(User user){

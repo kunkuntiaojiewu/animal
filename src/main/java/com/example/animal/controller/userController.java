@@ -7,9 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class userController {
@@ -35,11 +33,13 @@ public class userController {
         }
         return ResponseEntity.ok().body("创建成功");
     }
-    @PostMapping("/updateAvatar")
-    public void updateAvatar(String url,HttpServletRequest request){
-        String token = request.getHeader("token");
-        String userIdFromToken = TokenUtil.getUserIdFromToken(token);
-
-
+    @PutMapping("/updatePassword")
+    public void updateAvatar(String newPassword, @RequestHeader("Authorization") String authHeader){
+        String token = null;
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            // 通常JWT token是通过"Bearer "前缀来传递的
+            token = authHeader.substring(7); // 移除"Bearer "前缀
+        }
+        System.out.println(token);
     }
 }
