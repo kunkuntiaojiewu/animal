@@ -1,12 +1,15 @@
 package com.example.animal.jwt;
 
 
+
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.animal.entity.User;
-import org.springframework.beans.factory.annotation.Value;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 
 import java.util.Date;
@@ -19,7 +22,7 @@ import java.util.Date;
  * @date 2022/7/29
  */
 public class TokenUtil {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(TokenUtil.class);
     private static final long EXPIRE_TIME= 60*60*1000;
     private static final String TOKEN_SECRET="password";  //密钥盐
 

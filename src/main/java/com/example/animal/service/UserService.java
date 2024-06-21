@@ -13,7 +13,7 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public Optional<User> findUserById(int id) {
+    public User findUserById(Long id) {
         return userRepository.findById(id);
     }
     @Transactional
@@ -27,7 +27,7 @@ public class UserService {
     public User register(String username, String password){
         if (userRepository.findByUserName(username)==null){
             User user = new User(username, password);
-            user.setPicture("https://img.icons8.com/dotty/80/test-account.png");
+            user.setAvatar("https://img.icons8.com/dotty/80/test-account.png");
             return userRepository.save(user);
         }else return null;
     }
